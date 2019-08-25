@@ -12,13 +12,10 @@ Features (as requested):
 
  o         Click on team names takes to page displaying team players details:
 
-                    o    Name
-
-                    o    Random images displayed as player's picture
-
-                    o    Height & weight
-
-                    o    Position on court
+                  -   Name
+                  -   Random images displayed as player's picture
+                  -   Height & weight
+                  -   Position on court
                     
 There is also some logic to search google for the player/team image and display that in the tables, 
 but google API blocks me after 5k requests.
