@@ -1,9 +1,8 @@
 ﻿using NBA.Utils.Models;
 using Newtonsoft.Json;
-using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -25,15 +24,17 @@ namespace NBA.Utils.Requests
         {
             var endpoint = $"https://free-nba.p.rapidapi.com/players?page={page}&per_page={per_page}";
 
-            //var response = BuildRequests.Build(endpoint);
             var content = await BuildRequests.Build(endpoint);
-            return JsonConvert.DeserializeObject<AllPlayersResponse>(content.ToString());
+            var player = JsonConvert.DeserializeObject<AllPlayersResponse>(content.ToString());
+
+            //List<Player> orderedPlayers = player.Data.OrderBy(x => x.Height_feet + x.Height_inches).ToList();
+            //return new AllPlayersResponse { Data = orderedPlayers, Meta = player.Meta };
+            return player;
         }
 
         public static async Task<AllMatchesResponse> GetAllMatches(int page, int per_page)
         {
             var endpoint = $"https://free-nba.p.rapidapi.com/games?Seasons=2018%2C2017&page={page}&per_page={per_page}";
-            //var response = BuildRequests.Build(endpoint);
             var content = await BuildRequests.Build(endpoint);
 
             var jObj = JsonConvert.DeserializeObject<AllMatchesResponse>(content.ToString());
@@ -52,7 +53,7 @@ namespace NBA.Utils.Requests
             {
                 try
                 {
-                    players = await GetAllPlayers( currPage, 100);
+                    players = await GetAllPlayers(currPage, 100);
                 }
                 catch (Exception ew)
                 { throw new Exception(ew.Message); }
@@ -64,12 +65,7 @@ namespace NBA.Utils.Requests
                     {
                         if (player != null)
                         {
-                            try
-                            {
-                                playersList.Add(player.Id, player);
-                            }
-                            catch (Exception ex)
-                            { }
+                            playersList.Add(player.Id, player);
                         }
                     }
                 }
@@ -77,8 +73,8 @@ namespace NBA.Utils.Requests
             }
             while (currPage <= players.Meta.Total_pages && players.Meta.Next_page != null);
 
-            return playersList;
+            return playersList.OrderBy(x=>x.Value.Height_feet).ToDictionary(y=>y.Key, y=>y.Value);
         }
-        
+
     }
 }

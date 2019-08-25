@@ -30,10 +30,6 @@
                 <td>
                     @Html.ActionLink(@item.Home_team.Full_name, "Index",
                    "TeamDetails", new { teamId = @item.Home_team.Id }, new { teamId = @item.Home_team.Id })
-                    @*<br />
-            <img src="@NBA.Utils.Caching.CacheUtil.GetObjectFromCache($"{@item.Home_team.Full_name}_logo", 60,
-                 ()=> ImageProvider.GetImage(@item.Home_team.Full_name + " logo"))" />*@
-                </td>
                 <td>
                     <img src=@($"https://loremflickr.com/30/30?lock={@item.Home_team.Id}") />
                 </td>
@@ -44,11 +40,6 @@
                    "TeamDetails", new { teamId = @item.Visitor_team.Id }, new { teamId = @item.Home_team.Id })
                 </td>
                 <td>
-
-                    @*<br />
-            <img src="@NBA.Utils.Caching.CacheUtil.GetObjectFromCache($"{@item.Visitor_team.Full_name}_logo", 60,
-            ()=> ImageProvider.GetImage(@item.Visitor_team.Full_name + " logo"))" />*@
-
                     <img src=@($"https://loremflickr.com/30/30?lock={@item.Visitor_team.Id}") />
                 </td>
             </tr>
@@ -71,10 +62,13 @@
 
             @for (var page = Model.meta.Current_page; page <= Model.meta.Current_page + 3; page++)
             {
+                if (page <= Model.meta.Total_pages )
+                {
                 <li class="@(page == Model.meta.Current_page ? "active" : "")">
                     @Html.ActionLink(@page.ToString(), "Index", new { page = Model.meta.Current_page })
                 </li>
-            }
+                    }
+                }
 
             @if (Model.meta.Current_page < Model.meta.Total_pages)
             {

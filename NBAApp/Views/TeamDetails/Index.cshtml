@@ -1,40 +1,42 @@
 ﻿@using NBA.App.Models
-@using NBA.Utils.Images
-@using NBA.Utils.Caching
+<html>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
 @model TeamDetails
-<div>
-    <h3> Team details </h3>
-    <h3>@Model.team.Full_name</h3>
+<body>
+    <div>
+        <h3> Team details </h3>
+        <h3>@Model.team.Full_name</h3>
 
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-            <tr>
-                <td>Player Name </td>
-                <td>Player Image </td>
-                <td>Player Height </td>
-                <td>Player Weight </td>
-                <td>Player Position </td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var player in Model.playersList)
-            {
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
                 <tr>
-                    <td>@player.Value.Last_name, @player.Value.First_Name</td>
-                    <td>
-                        @*<br />
-        <img src="@CacheUtil.GetObjectFromCache($"{player.Value.First_Name}_{player.Value.Last_name}_pic", 60,
-         ()=> ImageProvider.GetImage($"{player.Value.First_Name} {player.Value.Last_name} {@player.Value.Team.Full_name}"))" />*@
-                        <img src=@($"https://loremflickr.com/50/50?lock={@player.Value.Id}") />
-                    </td>
-                    <td>@(player.Value.Height_feet == null ? "N/A" : player.Value.Height_feet.ToString()+", ")
-                        @(player.Value.Height_inches != null ? player.Value.Height_inches.ToString()+"''" : string.Empty) 
-                    </td>
-                    <td>@(player.Value.Weight_pounds != null ? player.Value.Weight_pounds.ToString() : "N/A")</td>
-                    <td>@(!string.IsNullOrEmpty(player.Value.Position) ?  player.Value.Position : "N/A")</td>
+                    <td>Player Name </td>
+                    <td>Player Image </td>
+                    <td>Player Height </td>
+                    <td>Player Weight </td>
+                    <td>Player Position </td>
                 </tr>
-            }
-        </tbody>
-    </table>
-
-</div>
+            </thead>
+            <tbody>
+                @foreach (var player in Model.playersList)
+                {
+                    <tr>
+                        <td>@player.Value.Last_name, @player.Value.First_Name</td>
+                        <td>
+                            <img src=@($"https://loremflickr.com/30/30?lock={@player.Value.Id}") />
+                        </td>
+                        <td>
+                            @(player.Value.Height_feet == null ? "N/A" : player.Value.Height_feet.ToString() + ", ")
+                            @(player.Value.Height_inches != null ? player.Value.Height_inches.ToString() + "''" : string.Empty)
+                        </td>
+                        <td>@(player.Value.Weight_pounds != null ? player.Value.Weight_pounds.ToString() : "N/A")</td>
+                        <td>@(!string.IsNullOrEmpty(player.Value.Position) ? player.Value.Position : "N/A")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>    
