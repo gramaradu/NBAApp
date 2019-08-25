@@ -42,6 +42,7 @@ Known issues & questions:
     
     Improvements:
       - Make UI prettier
+      - Make tables sortable (only valid with all data preloaded)
       - Tweak site for better speed
       - Better error handling
       
