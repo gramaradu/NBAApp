@@ -39,14 +39,8 @@ Known issues & questions:
     Downside: All players must be retrieved at app start and loaded into cache.
     Possible solution: Same as 1. 
     
-    
-    Improvements:
-      - Make UI prettier
-      - Make tables sortable (only valid with all data preloaded)
-      - Tweak site for better speed
-      - Better error handling
-      
-Given more time these issues could be easily fixed with a backend DB or a custom API and a middle Cache.
+     
+Given more time these issues could be fixed with a backend DB or a custom API and a middle Cache.
 Work time: ~9h
     
 
