@@ -28,7 +28,8 @@ The application needs a "warm-up" upon starting to load data in its cache.
 
 Known issues & questions:
 
-1. I could not find a way to get current players per team.
+1. I could not find a way to get current players per team. 
+    Can this be done with the current API?
     It appears that the API would not return played season for players.
     Downside: Players since 1980 all appear under a team. 
     Possible solution: Aggregate the data in a DB layer to better suit this app' needs.
