@@ -1,0 +1,93 @@
+﻿@using NBA.Utils.Models
+@using NBA.Utils.Caching
+@using System.Web.Mvc.Html
+
+<html>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+@model AllMatchesResponse
+<body>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <td> Date </td>
+                <td> Home team</td>
+                <td></td>
+                <td> Score</td>
+                <td> Away team </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.data)
+            {
+            <tr>
+                <td>
+                    @item.Date.ToShortDateString()
+                </td>
+                <td>
+                    @Html.ActionLink(@item.Home_team.Full_name, "Index",
+                   "TeamDetails", new { teamId = @item.Home_team.Id }, new { teamId = @item.Home_team.Id })
+                    @*<br />
+            <img src="@NBA.Utils.Caching.CacheUtil.GetObjectFromCache($"{@item.Home_team.Full_name}_logo", 60,
+                 ()=> ImageProvider.GetImage(@item.Home_team.Full_name + " logo"))" />*@
+                </td>
+                <td>
+                    <img src=@($"https://loremflickr.com/30/30?lock={@item.Home_team.Id}") />
+                </td>
+                <td> @item.Home_team_score  -  @item.Visitor_team_score</td>
+
+                <td>
+                    @Html.ActionLink(@item.Visitor_team.Full_name, "Index",
+                   "TeamDetails", new { teamId = @item.Visitor_team.Id }, new { teamId = @item.Home_team.Id })
+                </td>
+                <td>
+
+                    @*<br />
+            <img src="@NBA.Utils.Caching.CacheUtil.GetObjectFromCache($"{@item.Visitor_team.Full_name}_logo", 60,
+            ()=> ImageProvider.GetImage(@item.Visitor_team.Full_name + " logo"))" />*@
+
+                    <img src=@($"https://loremflickr.com/30/30?lock={@item.Visitor_team.Id}") />
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (Model.meta.Total_pages > 1)
+    {
+        <ul class="pagination">
+            @if (Model.meta.Current_page > 1)
+            {
+                <li>
+                    @Html.ActionLink("First", "Index")
+                </li>
+                <li>
+                    @Html.ActionLink("Previous", "Index", new { page = Model.meta.Current_page - 1 })
+                </li>
+            }
+
+            @for (var page = Model.meta.Current_page; page <= Model.meta.Current_page + 3; page++)
+            {
+                <li class="@(page == Model.meta.Current_page ? "active" : "")">
+                    @Html.ActionLink(@page.ToString(), "Index", new { page = Model.meta.Current_page })
+                </li>
+            }
+
+            @if (Model.meta.Current_page < Model.meta.Total_pages)
+            {
+                <li>
+                    @Html.ActionLink("Next", "Index", new { page = Model.meta.Current_page + 1 })
+                </li>
+                <li>
+                    @Html.ActionLink("Last", "Index", new { page = Model.meta.Total_pages })
+                </li>
+            }
+        </ul>
+    }
+</body>
+
+</html>
+

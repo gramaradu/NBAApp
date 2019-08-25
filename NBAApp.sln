@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBA.App", "NBAApp\NBA.App.csproj", "{41749574-330C-44EC-A8AC-896D659D3F45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBA.Utils", "NBA.Utils\NBA.Utils.csproj", "{2AF2ADFA-E3F4-4C69-B72D-6CFE719723F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41749574-330C-44EC-A8AC-896D659D3F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41749574-330C-44EC-A8AC-896D659D3F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41749574-330C-44EC-A8AC-896D659D3F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41749574-330C-44EC-A8AC-896D659D3F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF2ADFA-E3F4-4C69-B72D-6CFE719723F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF2ADFA-E3F4-4C69-B72D-6CFE719723F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF2ADFA-E3F4-4C69-B72D-6CFE719723F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF2ADFA-E3F4-4C69-B72D-6CFE719723F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B5EA794-D2FE-48F7-ADD5-747F7CC280F6}
+	EndGlobalSection
+EndGlobal
