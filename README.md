@@ -2,15 +2,15 @@
 To start the app open the .sln in Visual Studio and hit start debugging.
 
 Features (as requested):
-·         Date of event
+ o         Date of event
 
-·         Team names
+ o         Team names
 
-·         Random images displayed as team logo
+ o         Random images displayed as team logo
 
-·         Score
+ o         Score
 
-·         Click on team names takes to page displaying team players details:
+ o         Click on team names takes to page displaying team players details:
 
                     o    Name
 
@@ -41,7 +41,13 @@ Known issues & questions:
     Downside: All players must be retrieved at app start and loaded into cache.
     Possible solution: Same as 1. 
     
-Given more time these issues could be easily fixed with a backend DB and a middle Cache.
+    
+    Improvements:
+      - Make UI prettier
+      - Tweak site for better speed
+      - Better error handling
+      
+Given more time these issues could be easily fixed with a backend DB or a custom API and a middle Cache.
 Work time: ~9h
     
 
