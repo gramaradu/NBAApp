@@ -65,7 +65,7 @@
                 if (page <= Model.meta.Total_pages )
                 {
                 <li class="@(page == Model.meta.Current_page ? "active" : "")">
-                    @Html.ActionLink(@page.ToString(), "Index", new { page = Model.meta.Current_page })
+                    @Html.ActionLink(@page.ToString(), "Index", new { page = @page })
                 </li>
                     }
                 }
